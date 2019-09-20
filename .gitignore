@@ -1,0 +1,5 @@
+misc/
+book/
+book-*/
+*.zip
+*.pdf
