@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const fs = require('fs')
 
+const { exec } = require('child_process');
+
 var currentClass = null;
-var classList = ["hello"];
-console.log(process.argv.length);
+var classList = ["1Ainf"];
 
 if (process.argv.length === 2) {
   if (classList.length === 1) {
@@ -56,7 +57,7 @@ if (fs.existsSync(tomlSource)) {
   process.exit(1);
 }
 
-console.log(`Creating book for class ${currentClass}`);
+console.log(`# Creating book for class ${currentClass}`);
 
 console.log("# linking SUMMARY.md...");
 //console.log('Starting directory: ' + process.cwd());
@@ -64,7 +65,7 @@ try {
   process.chdir('src');
   try {
     fs.unlinkSync(summaryPath);
-  } catch (err) {  
+  } catch (err) {
   }
   fs.symlinkSync(summarySource, summaryPath);
   process.chdir('../');
@@ -79,11 +80,27 @@ console.log("# linking book.toml...");
 try {
   try {
     fs.unlinkSync(tomlPath);
-  } catch (err) {  
+  } catch (err) {
   }
   fs.symlinkSync(tomlSource, tomlPath);
 }
 catch (err) {
   console.log(err);
   process.exit(1);
+}
+
+// AUTO BUILD
+const autobuild = true;
+if (autobuild) {
+  console.log("# Building book...");
+  exec('./build.sh', (err, stdout, stderr) => {
+    if (err) {
+      // node couldn't execute the command
+      return;
+    }
+  });
+
+} else {
+  console.log("Now you can build the book with the following command:");
+  console.log(`export MDBOOK_BUILD__BUILD_DIR="book-${currentClass}"; mdbook build`);
 }
