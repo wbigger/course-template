@@ -1,6 +1,6 @@
 [book]
 authors = ["wbigger"]
-language = "en"
+language = "it"
 multilingual = false
 src = "src"
 title = "Course Template"

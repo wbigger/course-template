@@ -93,13 +93,16 @@ catch (err) {
 const autobuild = true;
 if (autobuild) {
   console.log("# Building book...");
-  exec('./build.sh', (err, stdout, stderr) => {
+  exec(`./build.sh ${currentClass}`, (err, stdout, stderr) => {
     if (err) {
+      console.log(err);
+      console.log(stderr);
       // node couldn't execute the command
       return;
+    } else {
+      console.log(stdout);
     }
   });
-
 } else {
   console.log("Now you can build the book with the following command:");
   console.log(`export MDBOOK_BUILD__BUILD_DIR="book-${currentClass}"; mdbook build`);
