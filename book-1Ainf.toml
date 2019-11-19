@@ -4,3 +4,7 @@ language = "it"
 multilingual = false
 src = "src"
 title = "Course Template"
+
+[output.html]
+additional-css = ["custom.css"]
+git-repository-url = "https://github.com/wbigger/"
