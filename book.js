@@ -4,7 +4,7 @@ const fs = require('fs')
 const { exec } = require('child_process');
 
 var currentClass = null;
-var classList = ["1Ainf"];
+var classList = ["generic"];
 
 if (process.argv.length === 2) {
   if (classList.length === 1) {

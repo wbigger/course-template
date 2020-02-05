@@ -1,0 +1,40 @@
+.centered {
+	text-align: center;
+}
+
+.big-font {
+	font-size: xx-large;
+}
+
+img {
+  width: 20%;
+}
+
+img.right_side {
+  float: right;
+  margin:5px 5px 0px 20px;
+}
+img.left_side {
+  float:left;
+  margin:5px 20px 0px 5px;
+}
+img.w50p {
+  width: 50%;
+}
+
+img.w35p {
+  width: 35%;
+}
+
+p.clear {
+  clear: both;
+}
+p.img-container {
+  margin-bottom: 15px;
+}
+
+p.img-container::after {
+  margin-bottom: 15px;
+  overflow: hidden;
+  clear: both;
+}

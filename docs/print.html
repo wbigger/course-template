@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="it" class="sidebar-visible no-js">
+<html lang="it" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -31,14 +31,16 @@
 
         <!-- Custom theme stylesheets -->
         
+        <link rel="stylesheet" href="custom.css">
+        
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -62,8 +64,11 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -79,8 +84,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-html5/index.html"><strong aria-hidden="true">2.</strong> HTML5 Walkthrough</a></li><li><ol class="section"><li class="expanded "><a href="01-html5/02-css.html"><strong aria-hidden="true">2.1.</strong> CSS</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -119,6 +124,10 @@
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
                             
+                            <a href="https://github.com/wbigger/" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -147,7 +156,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
+                        <h1><a class="header" href="#sviluppo-html5" id="sviluppo-html5">Sviluppo HTML5</a></h1>
+<p><strong>A.S. 2018-2019</strong></p>
+<p><strong>Istituto di Istruzione Superiore G. Marconi</strong></p>
+<p><strong>TPSI</strong></p>
+<p>Benvenuti ragazzi!</p>
+<p>Questo materiale riepiloga quanto detto a lezione negli scorsi giorni.</p>
+<p>Le risposte alle domande dei compiti in classe sono tutte incluse in questo materiale.</p>
+<p>I riferimenti al libro di testo sono tra parentesi quadre, come ad esempio [pag. 1].</p>
+<blockquote>
+<p>Il testo in questi box sono per approfondimento. La lettura di questo materiale non è strettamente
+necessaria per le verifiche, ma è consigliata per vostra cultura personale e in quanto
+sapere indispensabile per chi vuole diventare un informatico.</p>
+</blockquote>
+<p>Buon studio e buon lavoro.</p>
+<h1><a class="header" href="#html5-walkthrough" id="html5-walkthrough">HTML5 Walkthrough</a></h1>
+<style>
 .centered {
 	text-align: center;
 }
@@ -183,7 +207,7 @@ p.img-container::after {
 <h1><a class="header" href="#css" id="css">CSS</a></h1>
 <p class="img-container">
 L'HTML è fin da subito nato come uno standard aperto: questo all'inizio ha creato delle difficoltà, ma con il passare del tempo si è rivelato un aspetto vincente.
-<img class="right_side" title="CSS logo" alt="CSS logo" src="assets/css-logo.png" width="15%">
+<img class="right_side" title="CSS logo" alt="CSS logo" src="01-html5/assets/css-logo.png" width="15%">
 </p>
 <p>La definizione del CSS è un tipico esempio di quanto detto. Nei primi anni di diffusione (1993-1996) le diverse aziende concorrenti che hanno creato i primi browser (Netscape e Internet Explorer in particolare) crearono delle estensioni proprietarie dell'HTML con l'aggiunta di confusione e difficoltà per gli sviluppatori. Il w3c decise quindi di affrontare questo problema creando un gruppo di lavoro che produsse uno standard nel 1996 chiamato Cascading Style Sheet (CSS).</p>
 <p>Questa divisione si rivelò estremamente efficace per risolvere i problemi che si sono posti con il passare degli anni. In particolare, riuscì in modo eccellente a risolvere il problema della diversa dimensione degli schermi dei palmari prima e degli smartphone poi.</p>
@@ -196,7 +220,7 @@ L'HTML è fin da subito nato come uno standard aperto: questo all'inizio ha crea
 <li>dichiarare le proprietà da applicare a quegli elementi.</li>
 </ol>
 <p class="centered">
-<img style="width:85%; margin:15px 0" title="CSS selector" alt="CSS selector" src="assets/css-selector.gif" >
+<img style="width:85%; margin:15px 0" title="CSS selector" alt="CSS selector" src="01-html5/assets/css-selector.gif" >
 </p>
 <p>I selettori di base sono di 3 tipi:</p>
 <ul>
@@ -207,7 +231,7 @@ L'HTML è fin da subito nato come uno standard aperto: questo all'inizio ha crea
 <h2><a class="header" href="#box-model" id="box-model">Box model</a></h2>
 <p>Un altro concetto fondamentale del CSS è che la pagina è come se fosse uno scaffale, in cui ogni elemento è una scatola (<em>box</em>). La scatola è composta dalla confezione (<em>border</em>), al cui interno c'è un contenuto (<em>content</em>) protetto dall'imballaggio (<em>padding</em>). Le scatole sono distanziate l'una dall'altra da un margine di spazio (<em>margin</em>).</p>
 <p class="centered">
-<img style="width:85%; margin:15px 0" title="CSS box model" alt="CSS box model" src="assets/css-box-model.jpg" >
+<img style="width:85%; margin:15px 0" title="CSS box model" alt="CSS box model" src="01-html5/assets/css-box-model.jpg" >
 </p>
 <p>Ricapitolando, la nomenclatura del box-model utilizzato da CSS è:</p>
 <ul>
@@ -242,6 +266,14 @@ L'HTML è fin da subito nato come uno standard aperto: questo all'inizio ha crea
 
         
 
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         

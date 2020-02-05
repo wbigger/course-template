@@ -1,1 +1,1 @@
-SUMMARY-1Ainf.md
+SUMMARY-generic.md
