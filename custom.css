@@ -2,8 +2,16 @@
 	text-align: center;
 }
 
-.big-font {
+table {
+  font-family: monospace;
+}
+
+.xxl-font {
 	font-size: xx-large;
+}
+
+.large-font {
+	font-size: large;
 }
 
 img {
@@ -18,6 +26,11 @@ img.left_side {
   float:left;
   margin:5px 20px 0px 5px;
 }
+
+img.w80p {
+  width: 80%;
+}
+
 img.w50p {
   width: 50%;
 }
@@ -37,4 +50,9 @@ p.img-container::after {
   margin-bottom: 15px;
   overflow: hidden;
   clear: both;
+}
+
+figcaption {
+  font-size: medium;
+  font-style: italic; 
 }
