@@ -18,7 +18,7 @@ You have to have installed the following tools on your computer:
 - Fork this repository or select "Use as template" if you prefer.
 - Clone your new repository
 - In the "Settings" tab of GitHub, under the "GitHub Pages" section, select as source `master branch /docs folder`
-- You can verifiy that the template is online waiting some seconds and clicking on the link that shortly appears on GitHub
+- You can verify that the template is online waiting some seconds and clicking on the link that shortly appears on GitHub
 - Edit your book according to the official [User Guide](https://rust-lang.github.io/mdBook/)
 
 ### Publish course changes
