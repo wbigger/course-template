@@ -23,14 +23,23 @@ if (process.argv.length >= 4) {
   process.exit(1);
 }
 
-if (classList.includes(candidateClass)) {
-  currentClass = candidateClass;
-  console.log(`Using class: ${currentClass}`);
+// Optionally, we can check if the class
+// must be included in the class list or not
+const checkClassExists = false;
+
+if (checkClassExists) {
+  if (classList.includes(candidateClass)) {
+    currentClass = candidateClass;
+  } else {
+    console.log(`Class ${candidateClass} doesn't exist`);
+    console.log(`Class list: ${classList}`);
+    process.exit(1);
+  }
 } else {
-  console.log(`Class ${candidateClass} doesn't exist`);
-  console.log(`Class list: ${classList}`);
-  process.exit(1);
+  currentClass = candidateClass;
 }
+
+console.log(`Using class: ${currentClass}`);
 
 // Preliminary checks
 if (currentClass === null) {
@@ -44,7 +53,7 @@ console.log(summarySource);
 if (fs.existsSync(`src/${summarySource}`)) {
   //file exists, nothing to do now
 } else {
-  console.error(`Fatal error: file src/${summarySource} doesn't exist. Create one.`);
+  console.error(`Fatal error: file src/${summarySource} doesn't exist. Please create one and try again.`);
   process.exit(1);
 }
 
@@ -53,7 +62,7 @@ const tomlSource = `book-${currentClass}.toml`;
 if (fs.existsSync(tomlSource)) {
   //file exists, nothing to do now
 } else {
-  console.error(`Fatal error: file ${tomlSource} doesn't exist. Create one.`)
+  console.error(`Fatal error: file ${tomlSource} doesn't exist. Please create one and try again.`)
   process.exit(1);
 }
 
